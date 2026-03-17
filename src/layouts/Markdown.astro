@@ -1,0 +1,18 @@
+---
+import type { MarkdownLayoutProps } from "astro";
+import Layout, { type Props as LayoutProps } from "./Layout.astro";
+
+type Props = MarkdownLayoutProps<LayoutProps>;
+
+const props = Astro.props.frontmatter;
+---
+
+<Layout {...props}>
+  <article class="mx-auto max-w-prose pt-24">
+    <slot name="header" />
+    <section class="prose prose-headings:font-heading **:text-foreground">
+      <slot />
+    </section>
+    <slot name="footer" />
+  </article>
+</Layout>

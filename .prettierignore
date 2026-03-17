@@ -1,0 +1,9 @@
+# pnpm
+pnpm-lock.yaml
+.pnpm-store/
+
+# build output
+.astro/
+.vercel/
+dist/
+
