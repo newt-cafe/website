@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { HTMLAttributes } from "svelte/elements";
-  import SearchIcon from "@lucide/svelte/icons/search";
+  import SearchIcon from "@content/assets/lucide/search.svelte";
 
   interface Props extends HTMLAttributes<HTMLLabelElement> {
     filter(kw: string[], kv: Map<string, string>): void;
