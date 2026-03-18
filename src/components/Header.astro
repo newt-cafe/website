@@ -1,10 +1,14 @@
 ---
 import newt from "@content/assets/newt.png";
+import MenuIcon from "@lucide/astro/icons/menu";
+import XIcon from "@lucide/astro/icons/x";
 
 import PixelArt from "./ui/PixelArt.astro";
 import { cn } from "@/lib/utils";
 
 const items = [
+  { label: "Home", href: "/" },
+  { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
   { label: "Games", href: "/games" },
   { label: "Demos", href: "/demos" },
@@ -13,15 +17,28 @@ const items = [
 ---
 
 <header
-  class="bg-foreground/75 text-background font-heading fixed top-0 left-0 m-4 flex w-[calc(100%-2rem)] items-center justify-between p-2 backdrop-blur-lg"
+  class="font-heading before:bg-foreground/75 text-background fixed top-0 left-0 m-4 flex w-[calc(100%-2rem)] items-center justify-between p-2 before:absolute before:inset-0 before:-z-10 before:backdrop-blur-lg"
 >
   <a href="/" class="flex items-center gap-2">
     <PixelArt src={newt} width={48} height={48} alt="" />
     <span class="font-heading text-2xl">Newt Café</span>
   </a>
 
-  <nav>
-    <menu class="flex gap-2">
+  <input type="checkbox" hidden class="peer" id="header-toggle" />
+
+  <label
+    for="header-toggle"
+    class="sm:hidden peer-checked:[&_.menu]:hidden peer-checked:[&_.x]:block"
+  >
+    <MenuIcon class="menu" />
+    <XIcon class="x hidden" />
+    <span class="sr-only">Toggle navigation menu</span>
+  </label>
+
+  <nav
+    class="bg-foreground/75 clip-sm sm:clip-none fixed top-24 right-4 translate-x-[calc(100%+2rem)] transform p-4 backdrop-blur-lg transition-transform peer-checked:translate-x-0 sm:static sm:translate-x-0 sm:bg-transparent sm:p-0"
+  >
+    <menu class="flex flex-col gap-2 sm:flex-row">
       {
         items.map(({ href, label }) => {
           const isSelected =
@@ -48,7 +65,7 @@ const items = [
 </header>
 
 <style>
-  header {
+  header::before {
     clip-path: polygon(99% 0, 100% 64%, 97% 100%, 2% 100%, 0 87%, 1% 0);
   }
 </style>

@@ -1,9 +1,12 @@
 ---
+import newt from "@content/assets/newt.png";
 import SteamIcon from "@content/assets/steam.svg";
 import GitHubIcon from "@content/assets/github.svg";
 import YouTubeIcon from "@content/assets/youtube.svg";
 import BskyIcon from "@content/assets/bsky.svg";
 import XIcon from "@content/assets/x.svg";
+
+import PixelArt from "./ui/PixelArt.astro";
 
 const legal = [
   { label: "Privacy Policy", href: "/legal/privacy" },
@@ -29,12 +32,37 @@ const socials = [
   },
   { Icon: XIcon, href: "https://x.com/newt-cafe", label: "X" },
 ];
+
+const navigation = [
+  { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
+  { label: "Games", href: "/games" },
+  { label: "Demos", href: "/demos" },
+  { label: "Contact", href: "/contact" },
+];
 ---
 
 <footer
   class="bg-foreground text-background grid p-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
 >
-  <section class="sm:col-span-2 md:col-span-3 lg:col-span-4"></section>
+  <section>
+    <PixelArt src={newt} alt="" />
+    <h1 class="font-heading text-4xl font-black">Newt Café</h1>
+    <p class="font-heading text-2xl font-black">Indie game collective</p>
+  </section>
+
+  <nav>
+    <small class="opacity-50">WEBSITE</small>
+    <menu class="space-y-2">
+      {
+        navigation.map(({ href, label }) => (
+          <li>
+            <a {href}>{label}</a>
+          </li>
+        ))
+      }
+    </menu>
+  </nav>
 
   <nav>
     <small class="opacity-50">LEGAL</small>

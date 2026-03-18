@@ -1,16 +1,38 @@
 ---
 import newt from "@content/assets/newt.png";
 
+import { getCollection } from "astro:content";
+import { asCards } from "@/lib/mappers";
 import Layout from "@/layouts/Layout.astro";
 import PixelArt from "@/components/ui/PixelArt.astro";
+import Cards from "@/components/Cards.svelte";
+
+const posts = await asCards(await getCollection("blog"));
+const games = await asCards(await getCollection("games"));
+const demos = await asCards(await getCollection("demos"));
 ---
 
 <Layout title="Newt Café" desc="An indie game collective based in Brazil.">
   <section
-    class="flex h-[90vh] flex-col items-center justify-center text-center"
+    class="mt-16 flex h-[50vh] flex-col items-center justify-center p-4 text-center"
   >
     <PixelArt width={192} height={192} src={newt} alt="" />
     <h1 class="font-heading text-6xl font-black">Newt Café</h1>
     <h2 class="font-heading text-4xl font-black">Indie game collective</h2>
+  </section>
+
+  <section class="p-4">
+    <h1 class="font-heading text-4xl font-black">Recent Posts</h1>
+    <Cards cards={posts} empty="Nothing here yet!" href="/blog" client:load />
+  </section>
+
+  <section class="p-4">
+    <h1 class="font-heading text-4xl font-black">Games</h1>
+    <Cards cards={games} empty="Nothing here yet!" href="/games" client:load />
+  </section>
+
+  <section class="p-4">
+    <h1 class="font-heading text-4xl font-black">Demos</h1>
+    <Cards cards={demos} empty="Nothing here yet!" href="/demos" client:load />
   </section>
 </Layout>
