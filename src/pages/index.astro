@@ -1,11 +1,15 @@
 ---
+import newt from "@content/assets/newt.png";
+
 import Layout from "@/layouts/Layout.astro";
+import PixelArt from "@/components/ui/PixelArt.astro";
 ---
 
-<Layout
-  title="Newt Café"
-  desc="An indie game collective based in Brazil."
-  class="grid place-content-center"
->
-  <h1 class="font-heading text-6xl font-black">Hello, World!</h1>
+<Layout title="Newt Café" desc="An indie game collective based in Brazil.">
+  <section
+    class="flex h-[90vh] flex-col items-center justify-center text-center"
+  >
+    <PixelArt width={192} height={192} src={newt} alt="" />
+    <h1 class="font-heading text-6xl font-black">Newt Café</h1>
+  </section>
 </Layout>

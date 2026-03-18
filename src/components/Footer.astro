@@ -1,1 +1,72 @@
-<footer>TODO</footer>
+---
+import SteamIcon from "@content/assets/steam.svg";
+import GitHubIcon from "@content/assets/github.svg";
+import YouTubeIcon from "@content/assets/youtube.svg";
+import BskyIcon from "@content/assets/bsky.svg";
+import XIcon from "@content/assets/x.svg";
+
+const legal = [
+  { label: "Privacy Policy", href: "/legal/privacy" },
+  { label: "Terms of Service", href: "/legal/terms-of-service" },
+];
+
+const socials = [
+  {
+    Icon: SteamIcon,
+    href: "https://store.steampowered.com/developer/newt-cafe",
+    label: "Steam",
+  },
+  { Icon: GitHubIcon, href: "https://github.com/newt-cafe", label: "GitHub" },
+  {
+    Icon: YouTubeIcon,
+    href: "https://youtube.com/@newt-cafe",
+    label: "YouTube",
+  },
+  {
+    Icon: BskyIcon,
+    href: "https://bsky.app/profile/newt.cafe",
+    label: "Bluesky",
+  },
+  { Icon: XIcon, href: "https://x.com/newt-cafe", label: "X" },
+];
+---
+
+<footer
+  class="bg-foreground text-background grid p-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+>
+  <section class="sm:col-span-2 md:col-span-3 lg:col-span-4"></section>
+
+  <nav>
+    <small class="opacity-50">LEGAL</small>
+    <menu class="space-y-2">
+      {
+        legal.map(({ href, label }) => (
+          <li>
+            <a {href}>{label}</a>
+          </li>
+        ))
+      }
+    </menu>
+  </nav>
+
+  <nav>
+    <small class="opacity-50">SOCIALS</small>
+    <menu class="space-y-2">
+      {
+        socials.map(({ Icon, href, label }) => (
+          <li>
+            <a
+              class="flex gap-1"
+              {href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon width={24} height={24} />
+              <span>{label}</span>
+            </a>
+          </li>
+        ))
+      }
+    </menu>
+  </nav>
+</footer>

@@ -22,3 +22,11 @@ body {
 main {
   @apply min-h-full;
 }
+
+@utility pixel {
+  image-rendering: pixelated;
+}
+
+@utility clip-sm {
+  clip-path: polygon(98% 4%, 100% 64%, 93% 96%, 6% 98%, 0 41%, 9% 0);
+}

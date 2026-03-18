@@ -1,1 +1,54 @@
-<header>TODO</header>
+---
+import newt from "@content/assets/newt.png";
+
+import PixelArt from "./ui/PixelArt.astro";
+import { cn } from "@/lib/utils";
+
+const items = [
+  { label: "About", href: "/about" },
+  { label: "Games", href: "/games" },
+  { label: "Demos", href: "/demos" },
+  { label: "Contact", href: "/contact" },
+];
+---
+
+<header
+  class="bg-foreground/75 text-background font-heading fixed top-0 left-0 m-4 flex w-[calc(100%-2rem)] items-center justify-between p-2 backdrop-blur-lg"
+>
+  <a href="/" class="flex items-center gap-2">
+    <PixelArt src={newt} width={48} height={48} alt="" />
+    <span class="font-heading text-2xl">Newt Café</span>
+  </a>
+
+  <nav>
+    <menu class="flex gap-2">
+      {
+        items.map(({ href, label }) => {
+          const isSelected =
+            href === "/"
+              ? Astro.url.pathname === href
+              : Astro.url.pathname.startsWith(href);
+          return (
+            <li>
+              <a
+                {href}
+                class={cn(
+                  "text-xl",
+                  isSelected && "bg-background text-foreground clip-sm p-2",
+                )}
+              >
+                {label}
+              </a>
+            </li>
+          );
+        })
+      }
+    </menu>
+  </nav>
+</header>
+
+<style>
+  header {
+    clip-path: polygon(99% 0, 100% 64%, 97% 100%, 2% 100%, 0 87%, 1% 0);
+  }
+</style>

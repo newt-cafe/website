@@ -10,7 +10,7 @@ const { class: className, ...rest } = Astro.props;
 <button
   {...rest}
   class={cn(
-    "bg-foreground text-background font-heading text-xl rounded-full p-2 px-4",
+    "bg-foreground text-background font-heading text-xl p-2 px-4 cursor-pointer clip-sm",
     className,
   )}><slot /></button
 >
