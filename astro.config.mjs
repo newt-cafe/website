@@ -23,7 +23,6 @@ export default defineConfig({
         "@content": "/content",
       },
     },
-    noExternal: ["@lucide/svelte"],
   },
 
   fonts: [
